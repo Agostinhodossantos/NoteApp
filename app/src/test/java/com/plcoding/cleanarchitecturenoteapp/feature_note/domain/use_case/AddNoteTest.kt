@@ -14,7 +14,7 @@ import org.junit.Assert.assertThrows
 class AddNoteTest {
     lateinit var fakeNoteRepository: FakeNoteRepository
     lateinit var addNote: AddNote
-    lateinit var note: Note
+    private lateinit var note: Note
     @Before
     fun setup(){
 
