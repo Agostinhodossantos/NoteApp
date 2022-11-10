@@ -27,7 +27,7 @@ import org.junit.Test
 
 @HiltAndroidTest
 @UninstallModules(AppModule::class)
-class NotesScreenKtTest {
+class NotesScreenTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -35,7 +35,7 @@ class NotesScreenKtTest {
     @get:Rule(order = 1)
     val composeRule = createAndroidComposeRule<MainActivity>()
 
-    @OptIn(ExperimentalAnimationApi::class)
+    @ExperimentalAnimationApi
     @Before
     fun setUp() {
         hiltRule.inject()
@@ -55,8 +55,7 @@ class NotesScreenKtTest {
     }
 
     @Test
-    fun clickToggleOrderSection_invisible() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
+    fun clickToggleOrderSection_isVisible() {
         composeRule.onNodeWithTag(TestTags.ORDER_SECTION).assertDoesNotExist()
         composeRule.onNodeWithContentDescription("Sort").performClick()
         composeRule.onNodeWithTag(TestTags.ORDER_SECTION).assertIsDisplayed()
